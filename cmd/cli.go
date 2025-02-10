@@ -28,7 +28,7 @@ func Register(name string, f HookFunc) {
 
 func Root(ctx context.Context, logger *zap.Logger) *cobra.Command {
 	rootCmd := &cobra.Command{
-		Use:   "task",
+		Use:   "todo-cli",
 		Short: "Task is a CLI task manager",
 	}
 

@@ -5,6 +5,7 @@ import (
 
 	"github.com/charmbracelet/bubbles/textarea"
 	tea "github.com/charmbracelet/bubbletea"
+	"github.com/charmbracelet/lipgloss"
 )
 
 type model struct {
@@ -44,11 +45,14 @@ func (m model) View() string {
 
 func NewTextAreaModel(callBack func(string) error) model {
 	ta := textarea.New()
-	ta.Placeholder = "Enter text here..."
+	ta.Placeholder = "Enter Task Description..."
 	ta.Focus()
 	ta.SetHeight(5)
 	ta.SetWidth(40)
+	ta.FocusedStyle.CursorLine = lipgloss.NewStyle()
+	ta.ShowLineNumbers = false
 	ta.CharLimit = 200
+	ta.KeyMap.InsertNewline.SetEnabled(false)
 
 	return model{textarea: ta, callBack: callBack}
 }
